@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>أُحجِيَّة — Mystery Men's Couture</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+
+    /* ══ HERO ══ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 40px 100px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(8,8,8,0.95) 100%), 
+                  radial-gradient(ellipse at center, rgba(8,8,8,0.8), #000000);
+    }
+    .hero-bg-glow {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 50% 60%, rgba(176,130,56,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 80% 50% at 50% 100%, rgba(176,130,56,0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-ornament {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.6em;
+      color: #b08238;
+      text-transform: uppercase;
+      margin-bottom: 50px;
+      position: relative;
+      top: -30px;
+    }
+    .hero-arabic-title {
+      font-family: 'Noto Naskh Arabic', serif;
+      font-size: clamp(3.5rem, 9vw, 7.5rem);
+      font-weight: 700;
+      color: #b08238;
+      line-height: 1;
+      margin-bottom: 12px;
+      text-shadow: 0 0 80px rgba(176,130,56,0.4), 0 0 160px rgba(176,130,56,0.15);
+    }
+    .hero-sub-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.75rem, 1.7vw, 1rem);
+      letter-spacing: 0.55em;
+      color: #d4a763;
+      text-transform: uppercase;
+      margin-bottom: 50px;
+    }
+    .hero-divider {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, #d4a763, transparent);
+      margin: 0 auto 50px;
+    }
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      font-style: italic;
+      color: var(--cream);
+      max-width: 560px;
+      line-height: 1.85;
+      font-weight: 300;
+      margin-bottom: 52px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+    }
+    .scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: bob 2s ease 1s infinite;
+    }
+    .scroll-hint span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: #d4a763;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 38px;
+      background: linear-gradient(to bottom, #d4a763, transparent);
+    }
+    @keyframes bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(7px); }
+    }
+
+    /* ══ MARQUEE ══ */
+    .marquee-strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 0;
+      overflow: hidden;
+      background: rgba(176,130,56,0.04);
+    }
+    .marquee-track {
+      display: flex;
+      gap: 60px;
+      animation: marquee 22s linear infinite;
+      white-space: nowrap;
+    }
+    .marquee-item {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #d4a763;
+      flex-shrink: 0;
+      font-weight: 600;
+    }
+    .marquee-item span { color: #b08238; margin: 0 8px; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ══ INTRO ══ */
+    .intro-section {
+      padding: 100px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .intro-text .intro-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.55em;
+      text-transform: uppercase;
+      color: #d4a763;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .intro-text h2 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      color: var(--white);
+      font-weight: 400;
+      line-height: 1.3;
+      margin-bottom: 28px;
+    }
+    .intro-text h2 em { color: #b08238; font-style: normal; }
+    .intro-text p {
+      font-size: 1.1rem;
+      color: #E5E4E2;
+      line-height: 1.95;
+      font-weight: 300;
+      margin-bottom: 18px;
+    }
+    .intro-text .intro-cta { margin-top: 32px; }
+    .intro-visual {
+      position: relative;
+      height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .intro-frame {
+      width: 280px;
+      height: 380px;
+      border: 1px solid var(--border);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(160deg, #0d0d0d 0%, #161410 50%, #0d0d0d 100%);
+    }
+    .intro-frame::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      background: linear-gradient(135deg, var(--gold-dim), transparent 40%, transparent 60%, var(--gold-dim));
+      z-index: -1;
+    }
+    .corner-tl, .corner-tr, .corner-bl, .corner-br {
+      position: absolute;
+      width: 20px; height: 20px;
+    }
+    .corner-tl { top: 10px; left: 10px; border-top: 1px solid #d4a763; border-left: 1px solid #d4a763; }
+    .corner-tr { top: 10px; right: 10px; border-top: 1px solid #d4a763; border-right: 1px solid #d4a763; }
+    .corner-bl { bottom: 10px; left: 10px; border-bottom: 1px solid #d4a763; border-left: 1px solid #d4a763; }
+    .corner-br { bottom: 10px; right: 10px; border-bottom: 1px solid #d4a763; border-right: 1px solid #d4a763; }
+    .frame-glow {
+      position: absolute;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,167,99,0.2), transparent);
+      filter: blur(30px);
+    }
+    .frame-arabic {
+      font-family: 'Noto Naskh Arabic', serif;
+      font-size: 5rem;
+      color: rgba(176,130,56,0.15);
+      font-weight: 700;
+      position: absolute;
+    }
+    .frame-year {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Cinzel', serif;
+      font-size: 0.5rem;
+      letter-spacing: 0.45em;
+      color: var(--gold-dim);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* ══ COLLECTIONS GRID ══ */
+    .collections-section {
+      padding: 80px 60px 100px;
+    }
+    .collections-section::before {
+      content: '';
+      display: block;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+      margin-bottom: 80px;
+    }
+    .princes-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+    .prince-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .prince-card-inner {
+      position: relative;
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 32px 28px;
+      transition: transform 0.6s ease;
+    }
+    .prince-card:hover .prince-card-inner { transform: scale(1.02); }
+
+    /* PRODUCT IMAGE BACKGROUND */
+    .prince-product-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+    }
+
+    .prince-white .prince-card-inner {
+      background: linear-gradient(to top, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.2) 55%, transparent 100%);
+    }
+    .prince-black .prince-card-inner {
+      background: linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.3) 55%, transparent 100%);
+    }
+    .prince-crimson .prince-card-inner {
+      background: linear-gradient(to top, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.25) 55%, transparent 100%);
+    }
+    .prince-navy .prince-card-inner {
+      background: linear-gradient(to top, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.25) 55%, transparent 100%);
+    }
+    .prince-corner-dec {
+      position: absolute;
+      top: 20px; right: 20px;
+      width: 36px; height: 36px;
+      border-top: 1px solid;
+      border-right: 1px solid;
+      opacity: 0.35;
+      z-index: 2;
+    }
+    .prince-white .prince-corner-dec { border-color: #c8c0a0; }
+    .prince-black .prince-corner-dec { border-color: #d4a763; }
+    .prince-crimson .prince-corner-dec { border-color: #c04060; }
+    .prince-navy .prince-corner-dec { border-color: #4060a0; }
+
+    .prince-glow {
+      position: absolute;
+      top: 18%; left: 50%;
+      transform: translateX(-50%);
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.18;
+      transition: opacity 0.4s;
+      z-index: 1;
+    }
+    .prince-card:hover .prince-glow { opacity: 0.32; }
+    .prince-white .prince-glow  { background: #d4c898; }
+    .prince-black .prince-glow  { background: #d4a763; }
+    .prince-crimson .prince-glow{ background: #a02040; }
+    .prince-navy .prince-glow   { background: #2040a0; }
+
+    .prince-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.52rem; letter-spacing: 0.45em;
+      text-transform: uppercase; margin-bottom: 8px;
+      position: relative; z-index: 3;
+    }
+    .prince-white .prince-label  { color: #a09870; }
+    .prince-black .prince-label  { color: var(--gold-dim); }
+    .prince-crimson .prince-label{ color: #a03050; }
+    .prince-navy .prince-label   { color: #405080; }
+
+    .prince-name {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;
+      color: #E5E4E2;
+      position: relative; z-index: 3;
+    }
+    .prince-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem; font-style: italic;
+      font-weight: 300; line-height: 1.65;
+      color: #E5E4E2; margin-bottom: 16px;
+      position: relative; z-index: 3;
+    }
+    .prince-price {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem; letter-spacing: 0.1em;
+      color: #d4a763;
+      position: relative; z-index: 3;
+    }
+
+    /* ══ BEST SELLERS ══ */
+    .bestsellers {
+      padding: 80px 60px 100px;
+      background: rgba(176,130,56,0.03);
+      border-top: 1px solid var(--border-dim);
+    }
+    .bestsellers .section-title {
+      font-size: 1.2rem;
+      color: #b08238;
+      font-weight: 700;
+    }
+    .bestsellers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .bs-card {
+      border: 1px solid rgba(212,167,99,0.2);
+      padding: 28px;
+      position: relative;
+      transition: border-color 0.3s, transform 0.3s;
+      cursor: pointer;
+    }
+    .bs-card:hover {
+      border-color: rgba(212,167,99,0.5);
+      transform: translateY(-4px);
+    }
+    .bs-img {
+      width: 100%; height: 230px;
+      margin-bottom: 22px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0a0a0a;
+    }
+    
+    .bs-product-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .bs-number {
+      position: absolute; top: 14px; right: 16px;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2.4rem; color: rgba(176,130,56,0.08);
+      font-weight: 900; line-height: 1;
+      z-index: 2;
+    }
+    .bs-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.5rem; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--gold-dim); margin-bottom: 6px;
+    }
+    .bs-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.12rem; color: #E5E4E2;
+      margin-bottom: 8px; font-weight: 400;
+    }
+    .bs-price {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem; color: #d4a763;
+      letter-spacing: 0.08em;
+    }
+
+    /* ══ QUOTE ══ */
+    .quote-section {
+      text-align: center;
+      padding: 80px 60px;
+      border-top: 1px solid var(--border-dim);
+      border-bottom: 1px solid var(--border-dim);
+    }
+    .quote-mark {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 4rem; color: rgba(176,130,56,0.18);
+      line-height: 0.5; margin-bottom: 22px;
+    }
+    .quote-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-style: italic; font-weight: 300;
+      color: #b08238; max-width: 700px;
+      margin: 0 auto 28px; line-height: 1.75;
+    }
+    .quote-attr {
+      font-family: 'Cinzel', serif;
+      font-size: 0.56rem; letter-spacing: 0.4em;
+      text-transform: uppercase; color: #E5E4E2;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="starfield"></div>
+
+  <!-- ══ NAVIGATION ══ -->
+  <nav>
+    <a href="Mystery.html" class="nav-logo">
+      <span class="arabic">أُحجِيَّة</span>
+      <span class="english">Mystery · Est. 2007</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="Mystery.html" class="active">Home</a></li>
+      <li><a href="About Us.html">About</a></li>
+      <li><a href="Collection.html">Collection</a></li>
+      <li><a href="Contact.html">Contact</a></li>
+    </ul>
+    <a href="Contact.html" class="nav-cta">Book Fitting</a>
+  </nav>
+
+  <div class="page-content">
+
+    <!-- ══ HERO ══ -->
+    <section class="hero">
+      <div class="hero-bg-glow"></div>
+      <p class="hero-ornament fade-up">◈ &nbsp; Riyadh · Saudi Arabia · Since 2007 &nbsp; ◈</p>
+      <h1 class="hero-arabic-title fade-up delay-1">أُحجِيَّة</h1>
+      <p class="hero-sub-title fade-up delay-2">Mystery &nbsp;·&nbsp; Men's Couture</p>
+      <div class="hero-divider fade-up delay-2"></div>
+      <p class="hero-tagline fade-up delay-3">
+        Where princes are forged in cloth and shadow.<br/>
+        Wear what cannot be named.
+      </p>
+      <div class="hero-buttons fade-up delay-4">
+        <a href="Collection.html" class="btn-primary">Explore Collection</a>
+        <a href="About Us.html" class="btn-outline">Our Story</a>
+      </div>
+      <div class="scroll-hint">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ══ MARQUEE ══ -->
+    <div class="marquee-strip">
+      <div class="marquee-track">
+        <span class="marquee-item">The White Prince <span>◈</span></span>
+        <span class="marquee-item">The Black Knight <span>◈</span></span>
+        <span class="marquee-item">Crimson Sovereign <span>◈</span></span>
+        <span class="marquee-item">Midnight Heir <span>◈</span></span>
+        <span class="marquee-item">Bespoke Couture <span>◈</span></span>
+        <span class="marquee-item">Riyadh · Est. 2007 <span>◈</span></span>
+        <span class="marquee-item">The White Prince <span>◈</span></span>
+        <span class="marquee-item">The Black Knight <span>◈</span></span>
+        <span class="marquee-item">Crimson Sovereign <span>◈</span></span>
+        <span class="marquee-item">Midnight Heir <span>◈</span></span>
+        <span class="marquee-item">Bespoke Couture <span>◈</span></span>
+        <span class="marquee-item">Riyadh · Est. 2007 <span>◈</span></span>
+      </div>
+    </div>
+
+    <!-- ══ INTRO ══ -->
+    <section class="intro-section">
+      <div class="intro-text">
+        <span class="intro-label">◈ &nbsp; The House of Mystery &nbsp; ◈</span>
+        <h2>Clothing is not worn.<br/>It is <em>inhabited.</em></h2>
+        <p>أُحجِيَّة is not a fashion house — it is a realm. Founded in Riyadh in 2007, every garment we craft is a meditation on identity, power, and the surreal beauty of a man who knows exactly who he is.</p>
+        <p>From ivory silk suits that command a room without speaking to obsidian armour-cut blazers that carry the weight of centuries, our collections speak to those who understand that what you wear is not decoration. It is declaration.</p>
+        <div class="intro-cta">
+          <a href="About Us.html" class="btn-outline">Discover Our Story</a>
+        </div>
+      </div>
+      <div class="intro-visual">
+        <div class="intro-frame">
+          <div class="corner-tl"></div>
+          <div class="corner-tr"></div>
+          <div class="corner-bl"></div>
+          <div class="corner-br"></div>
+          <div class="frame-glow"></div>
+          <div class="frame-arabic">أُ</div>
+          <span class="frame-year">◈ &nbsp; Est. Riyadh, 2007 &nbsp; ◈</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FOUR COLLECTIONS ══ -->
+    <section class="collections-section">
+      <div class="section-header">
+        <span class="section-label">◈ &nbsp; The Royal Lines &nbsp; ◈</span>
+        <h2 class="section-title">Choose Your <em>Throne</em></h2>
+        <p class="section-desc">Each collection is a realm unto itself — woven for those who understand that clothing is sovereignty.</p>
+      </div>
+
+      <div class="princes-grid">
+
+        <div class="prince-card prince-white">
+          <div class="prince-card-inner">
+            <img src="The White Price.png" alt="The White Prince Collection" class="prince-product-img">
+            <div class="prince-glow"></div>
+            <div class="prince-corner-dec"></div>
+            <p class="prince-label">Collection I</p>
+            <h3 class="prince-name">The White Prince</h3>
+            <p class="prince-desc">Ivory silk, embroidered in silver — purity worn as power.</p>
+            <span class="prince-price">From SAR 3,200</span>
+          </div>
+        </div>
+
+        <div class="prince-card prince-black">
+          <div class="prince-card-inner">
+            <img src="The Black Knight.png" alt="The Black Knight Collection" class="prince-product-img">
+            <div class="prince-glow"></div>
+            <div class="prince-corner-dec"></div>
+            <p class="prince-label">Collection II</p>
+            <h3 class="prince-name">The Black Knight</h3>
+            <p class="prince-desc">Obsidian wool, gold-threaded lapels — darkness made divine.</p>
+            <span class="prince-price">From SAR 3,800</span>
+          </div>
+        </div>
+
+        <div class="prince-card prince-crimson">
+          <div class="prince-card-inner">
+            <img src="Crimson Soverign.png" alt="Crimson Sovereign Collection" class="prince-product-img">
+            <div class="prince-glow"></div>
+            <div class="prince-corner-dec"></div>
+            <p class="prince-label">Collection III</p>
+            <h3 class="prince-name">Crimson Sovereign</h3>
+            <p class="prince-desc">Deep burgundy velvet, for those who rule without asking.</p>
+            <span class="prince-price">From SAR 4,100</span>
+          </div>
+        </div>
+
+        <div class="prince-card prince-navy">
+          <div class="prince-card-inner">
+            <img src="The Midnight Heir.png" alt="Midnight Heir Collection" class="prince-product-img">
+            <div class="prince-glow"></div>
+            <div class="prince-corner-dec"></div>
+            <p class="prince-label">Collection IV</p>
+            <h3 class="prince-name">Midnight Heir</h3>
+            <p class="prince-desc">Midnight navy with celestial lining — dressed for another world.</p>
+            <span class="prince-price">From SAR 3,600</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ BEST SELLERS ══ -->
+    <section class="bestsellers">
+      <div class="section-header">
+        <span class="section-label">◈ &nbsp; Most Coveted &nbsp; ◈</span>
+        <h2 class="section-title">Best <em>Sellers</em></h2>
+        <p class="section-desc">The pieces our clients return for — and the ones others dream of.</p>
+      </div>
+
+      <div class="bestsellers-grid">
+
+        <div class="bs-card">
+          <div class="bs-number">01</div>
+          <div class="bs-img">
+            <img src="The Ivory Silhouette Suit.png" alt="The Ivory Silhouette Suit" class="bs-product-img">
+          </div>
+          <p class="bs-tag">White Prince · Signature</p>
+          <p class="bs-name">The Ivory Silhouette Suit</p>
+          <p class="bs-price">SAR 4,500</p>
+        </div>
+
+        <div class="bs-card">
+          <div class="bs-number">02</div>
+          <div class="bs-img">
+            <img src="Velvet Ceremonial Coat.png" alt="Velvet Ceremonial Coat" class="bs-product-img">
+          </div>
+          <p class="bs-tag">Crimson Sovereign · Limited</p>
+          <p class="bs-name">Velvet Ceremonial Coat</p>
+          <p class="bs-price">SAR 5,800</p>
+        </div>
+
+        <div class="bs-card">
+          <div class="bs-number">03</div>
+          <div class="bs-img">
+            <img src="Stargazer Formal Set.png" alt="The Stargazer Formal Set" class="bs-product-img">
+          </div>
+          <p class="bs-tag">Midnight Heir · Celestial</p>
+          <p class="bs-name">The Stargazer Formal Set</p>
+          <p class="bs-price">SAR 5,200</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ QUOTE ══ -->
+    <div class="quote-section">
+      <div class="quote-mark">"</div>
+      <p class="quote-text">Fashion is the armour to survive the reality of everyday life. At أُحجِيَّة, we craft yours for kingdoms yet to be conquered.</p>
+      <span class="quote-attr">◈ &nbsp; أُحجِيَّة — House of Mystery &nbsp; ◈</span>
+    </div>
+
+    <!-- ══ FOOTER ══ -->
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand footer-col">
+          <span class="arabic-name">أُحجِيَّة</span>
+          <span class="brand-tagline">Mystery · Men's Couture · Est. 2007</span>
+          <p>Founded in the heart of Riyadh, أُحجِيَّة has dressed men who understand that clothing is not worn — it is inhabited. Every piece is a secret told through cloth.</p>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Navigate</span>
+          <ul>
+            <li><a href="Mystery.html">Home</a></li>
+            <li><a href="About Us.html">About</a></li>
+            <li><a href="Collection.html">Collection</a></li>
+            <li><a href="Contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Collections</span>
+          <ul>
+            <li><a href="Collection.html">The White Prince</a></li>
+            <li><a href="Collection.html">The Black Knight</a></li>
+            <li><a href="Collection.html">Crimson Sovereign</a></li>
+            <li><a href="Collection.html">Midnight Heir</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact footer-col">
+          <span class="footer-col-title">Contact</span>
+          <p><strong>Address</strong>Al Olaya District, King Fahd Road, Riyadh, Saudi Arabia</p>
+          <p><strong>Phone</strong>+966 56 079 3181</p>
+          <p><strong>Email</strong>assist@mystery.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 أُحجِيَّة — All rights reserved</span>
+        <div class="footer-social">
+          <a href="#">Instagram</a>
+          <a href="#">X / Twitter</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>

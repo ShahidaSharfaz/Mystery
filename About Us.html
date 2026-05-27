@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — أُحجِيَّة Mystery Men's Couture</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+
+    /* ══ ABOUT HERO ══ */
+    .about-hero {
+      padding: 160px 60px 100px;
+      text-align: center;
+      position: relative;
+    }
+    .about-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 1px; height: 60px;
+      background: linear-gradient(to bottom, #d4a763, transparent);
+    }
+
+    /* ══ STORY SECTION ══ */
+    .story-section {
+      padding: 100px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .story-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-bottom: 100px;
+    }
+    .story-block.reverse { direction: rtl; }
+    .story-block.reverse > * { direction: ltr; }
+
+    .story-visual {
+      position: relative;
+      height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .story-frame {
+      width: 260px; height: 340px;
+      border: 1px solid rgba(212,167,99,0.3);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .story-frame-1 { background: linear-gradient(150deg, #0a0a0a, #1a160c, #0d0d0d); }
+    .story-frame-2 { background: linear-gradient(150deg, #06080f, #0e1520, #060608); }
+    .story-frame-3 { background: linear-gradient(150deg, #0d0508, #1e0812, #0a0305); }
+    .story-frame-4 { background: linear-gradient(150deg, #0a0a0a, #161616, #0d0d0d); }
+
+    .story-frame .corner-tl, .story-frame .corner-tr,
+    .story-frame .corner-bl, .story-frame .corner-br { opacity: 0.5; }
+
+    .story-glow {
+      position: absolute; inset: 0;
+      filter: blur(50px); opacity: 0.2;
+    }
+    .story-frame-1 .story-glow { background: radial-gradient(circle at 50% 40%, #c8a050, transparent); }
+    .story-frame-2 .story-glow { background: radial-gradient(circle at 50% 40%, #2040a0, transparent); }
+    .story-frame-3 .story-glow { background: radial-gradient(circle at 50% 40%, #a02040, transparent); }
+    .story-frame-4 .story-glow { background: radial-gradient(circle at 50% 40%, #c9a84c, transparent); }
+
+    .story-symbol {
+      font-family: 'Noto Naskh Arabic', serif;
+      font-size: 4rem; color: rgba(212,167,99,0.15);
+      font-weight: 700; z-index: 1; position: relative;
+    }
+    .story-year-tag {
+      position: absolute; bottom: 20px; left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Cinzel', serif;
+      font-size: 0.5rem; letter-spacing: 0.45em;
+      color: #d4a763; text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .story-text h3 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+      color: #b08238; font-weight: 700;
+      line-height: 1.3; margin-bottom: 24px;
+    }
+    .story-text h3 em { color: #d4a763; font-style: normal; }
+    .story-text p {
+      font-size: 1.05rem; color: #E5E4E2;
+      line-height: 2; font-weight: 300;
+      margin-bottom: 16px;
+    }
+    .story-text .story-quote {
+      font-size: 1.1rem; font-style: italic;
+      color: #E5E4E2; line-height: 1.8;
+      border-left: 2px solid #d4a763;
+      padding-left: 20px; margin: 24px 0;
+      font-weight: 300;
+    }
+
+    /* ══ VALUES SECTION ══ */
+    .values-section {
+      padding: 80px 60px 100px;
+      background: rgba(176,130,56,0.04);
+      border-top: 1px solid var(--border-dim);
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .value-card {
+      border: 1px solid rgba(212,167,99,0.2);
+      padding: 40px 32px;
+      text-align: center;
+      position: relative;
+      transition: border-color 0.3s;
+      background: rgba(229,228,226,0.02);
+    }
+    .value-card:hover { border-color: rgba(212,167,99,0.4); }
+    .value-icon {
+      font-family: 'Noto Naskh Arabic', serif;
+      font-size: 2.2rem; color: #d4a763;
+      margin-bottom: 16px; display: block;
+      opacity: 0.8;
+    }
+    .value-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem; letter-spacing: 0.35em;
+      text-transform: uppercase; color: #d4a763;
+      margin-bottom: 14px; display: block;
+      font-weight: 600;
+    }
+    .value-text {
+      font-size: 0.96rem; color: #E5E4E2;
+      line-height: 1.85; font-weight: 300;
+    }
+    .value-corner {
+      position: absolute; top: 12px; right: 12px;
+      width: 16px; height: 16px;
+      border-top: 1px solid #d4a763;
+      border-right: 1px solid #d4a763;
+    }
+
+    /* ══ VISION / MISSION ══ */
+    .vm-section {
+      padding: 80px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .vm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+    }
+    .vm-block {
+      padding: 60px 50px;
+      position: relative;
+      border: 1px solid rgba(212,167,99,0.2);
+      background: rgba(229,228,226,0.02);
+    }
+    .vm-block-vision { background: rgba(176,130,56,0.05); }
+    .vm-block-mission { background: rgba(229,228,226,0.03); }
+    .vm-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.56rem; letter-spacing: 0.5em;
+      text-transform: uppercase; color: #d4a763;
+      margin-bottom: 12px; display: block;
+    }
+    .vm-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.6rem; color: #b08238;
+      margin-bottom: 22px; font-weight: 700;
+    }
+    .vm-title em { color: #d4a763; font-style: normal; }
+    .vm-text {
+      font-size: 1.05rem; color: #E5E4E2;
+      line-height: 2; font-weight: 300;
+    }
+    .vm-number {
+      position: absolute; top: 20px; right: 24px;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 3rem; color: rgba(176,130,56,0.08);
+      font-weight: 900; line-height: 1;
+    }
+
+    /* ══ TEAM / FOUNDERS ══ */
+    .founders-section {
+      padding: 80px 60px 100px;
+      border-top: 1px solid var(--border-dim);
+    }
+    .founders-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .founder-card {
+      border: 1px solid rgba(212,167,99,0.25);
+      padding: 40px 32px;
+      text-align: center;
+      transition: border-color 0.3s;
+      background: rgba(229,228,226,0.03);
+    }
+    .founder-card:hover { border-color: rgba(212,167,99,0.5); }
+    .founder-avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex; align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.6rem; color: #d4a763;
+      border: 1px solid rgba(212,167,99,0.3);
+      background: rgba(176,130,56,0.08);
+    }
+    .founder-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: #b08238;
+      margin-bottom: 6px; font-weight: 600;
+    }
+    .founder-role {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.92rem; font-style: italic;
+      color: #d4a763; margin-bottom: 14px;
+    }
+    .founder-bio {
+      font-size: 0.94rem; color: #E5E4E2;
+      line-height: 1.85; font-weight: 300;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="starfield"></div>
+
+  <!-- ══ NAVIGATION ══ -->
+  <nav>
+    <a href="Mystery.html" class="nav-logo">
+      <span class="arabic">أُحجِيَّة</span>
+      <span class="english">Mystery · Est. 2007</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="Mystery.html">Home</a></li>
+      <li><a href="About Us.html" class="active">About</a></li>
+      <li><a href="Collection.html">Collection</a></li>
+      <li><a href="Contact.html">Contact</a></li>
+    </ul>
+    <a href="Contact.html" class="nav-cta">Book Fitting</a>
+  </nav>
+
+  <div class="page-content">
+
+    <!-- ══ PAGE HERO ══ -->
+    <div class="about-hero">
+      <p class="page-hero-label fade-up">◈ &nbsp; The House of Mystery &nbsp; ◈</p>
+      <h1 class="page-hero-title fade-up delay-1">Our <em>Story</em></h1>
+      <p class="page-hero-sub fade-up delay-2">A tale of cloth, shadow, and the men who wear both.</p>
+    </div>
+
+    <!-- ══ STORY BLOCKS ══ -->
+    <section class="story-section">
+
+      <!-- History -->
+      <div class="story-block">
+        <div class="story-visual">
+          <div class="story-frame story-frame-1">
+            <div class="corner-tl"></div>
+            <div class="corner-tr"></div>
+            <div class="corner-bl"></div>
+            <div class="corner-br"></div>
+            <div class="story-glow"></div>
+            <span class="story-symbol">٢٠٠٧</span>
+            <span class="story-year-tag">◈ &nbsp; The Beginning &nbsp; ◈</span>
+          </div>
+        </div>
+        <div class="story-text">
+          <span class="section-label">◈ &nbsp; Our History &nbsp; ◈</span>
+          <h3>Born in <em>Riyadh</em>,<br/>Dressed for Eternity</h3>
+          <p>In 2007, Shahida Sharfaz — a Sri Lankan-born visionary who had spent a decade studying master tailoring in Paris and Florence — returned to Saudi Arabia carrying a single conviction: that men deserved garments as complex and commanding as their heritage.</p>
+          <p>With the support of her childhood friend and business partner Huzaifa Fayaz, she opened a small atelier in the Al Olaya district. The name أُحجِيَّة — "mystery" in Arabic — was chosen deliberately. "A man of substance," Shahida once said, "should always leave something unsaid."</p>
+          <blockquote class="story-quote">
+            "We did not open a shop. We opened a threshold — between who a man is, and who he was always meant to be."
+          </blockquote>
+        </div>
+      </div>
+
+      <!-- Growth -->
+      <div class="story-block reverse">
+        <div class="story-visual">
+          <div class="story-frame story-frame-2">
+            <div class="corner-tl"></div>
+            <div class="corner-tr"></div>
+            <div class="corner-bl"></div>
+            <div class="corner-br"></div>
+            <div class="story-glow"></div>
+            <span class="story-symbol">نمو</span>
+            <span class="story-year-tag">◈ &nbsp; 2010 — Expansion &nbsp; ◈</span>
+          </div>
+        </div>
+        <div class="story-text">
+          <span class="section-label">◈ &nbsp; Growth &nbsp; ◈</span>
+          <h3>From Atelier to <em>Icon</em></h3>
+          <p>By 2010, word had spread through Riyadh's social circles that أُحجِيَّة was not simply a tailor — it was an experience. Clients would arrive for fittings and leave hours later, having discussed art, philosophy, and identity over Arabic coffee.</p>
+          <p>The brand expanded its collections to include The White Prince line — inspired by the ceremonial robes of historical Arabian courts — and the brooding obsidian suits that would later be renamed The Black Knight. Each line was a world. Each garment, a portal.</p>
+          <p>By 2015, أُحجِيَّة had dressed dignitaries, artists, and quiet men of immense power across the Kingdom and beyond.</p>
+        </div>
+      </div>
+
+      <!-- Philosophy -->
+      <div class="story-block">
+        <div class="story-visual">
+          <div class="story-frame story-frame-3">
+            <div class="corner-tl"></div>
+            <div class="corner-tr"></div>
+            <div class="corner-bl"></div>
+            <div class="corner-br"></div>
+            <div class="story-glow"></div>
+            <span class="story-symbol">فلسفة</span>
+            <span class="story-year-tag">◈ &nbsp; The Philosophy &nbsp; ◈</span>
+          </div>
+        </div>
+        <div class="story-text">
+          <span class="section-label">◈ &nbsp; Our Philosophy &nbsp; ◈</span>
+          <h3>The <em>Mystical</em> Craft</h3>
+          <p>أُحجِيَّة draws inspiration from the intersection of two worlds: the surreal, dreamlike imagery of Eastern poetry and the razor-sharp structural discipline of European haute couture. The result is something entirely unclassifiable.</p>
+          <p>Our designers treat each garment as a kind of spell — a deliberate arrangement of cloth, weight, colour, and line designed to alter how a man feels, moves, and is perceived. We believe that a truly great suit does not merely fit a body. It shapes a presence.</p>
+          <blockquote class="story-quote">
+            "There is no mysticism without craft, and no craft worth making that does not carry a little mystery."
+          </blockquote>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ══ VISION & MISSION ══ -->
+    <section class="vm-section">
+      <div class="section-header">
+        <span class="section-label">◈ &nbsp; What Drives Us &nbsp; ◈</span>
+        <h2 class="section-title">Vision & <em>Mission</em></h2>
+      </div>
+      <div class="vm-grid">
+        <div class="vm-block vm-block-vision">
+          <div class="vm-number">I</div>
+          <span class="vm-label">◈ &nbsp; Vision &nbsp; ◈</span>
+          <h3 class="vm-title">To Redefine <em>Presence</em></h3>
+          <p class="vm-text">Our vision is to be the world's most distinctive house of men's couture — one that bridges the ancient aesthetic traditions of the Arab world with the boundless imagination of contemporary fashion. We do not follow trends. We render them irrelevant.</p>
+          <p class="vm-text" style="margin-top:14px;">We envision a world where every أُحجِيَّة garment is recognised not by its logo, but by its silence — the quiet authority it confers upon the man who wears it.</p>
+        </div>
+        <div class="vm-block vm-block-mission">
+          <div class="vm-number">II</div>
+          <span class="vm-label">◈ &nbsp; Mission &nbsp; ◈</span>
+          <h3 class="vm-title">To Craft What <em>Cannot Be Named</em></h3>
+          <p class="vm-text">Our mission is to create bespoke and ready-to-wear menswear of uncompromising quality, rooted in Saudi heritage and elevated through meticulous craft. Every stitch is intentional. Every garment, a conversation between the maker and the man.</p>
+          <p class="vm-text" style="margin-top:14px;">We are committed to sourcing the finest fabrics — Italian wool, Japanese silk, hand-loomed Arabian cotton — and to maintaining ateliers where the art of tailoring is practised as it always has been: slowly, carefully, and with great reverence.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ VALUES ══ -->
+    <section class="values-section">
+      <div class="section-header">
+        <span class="section-label">◈ &nbsp; What We Stand For &nbsp; ◈</span>
+        <h2 class="section-title">Our <em>Values</em></h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-corner"></div>
+          <span class="value-icon">حرفة</span>
+          <span class="value-title">Mastery of Craft</span>
+          <p class="value-text">Every garment at أُحجِيَّة is assembled by hand in our Riyadh atelier. We refuse to rush what must be slow. Mastery, to us, is not a destination — it is a daily practice of refusal: refusing shortcuts, refusing the ordinary, refusing the good in favour of the exceptional.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-corner"></div>
+          <span class="value-icon">هوية</span>
+          <span class="value-title">Identity & Heritage</span>
+          <p class="value-text">We believe that clothing is a form of memory. Our designs are threaded through with the visual language of the Arabian Peninsula — geometry, calligraphy, the architecture of ancient courts — worn forward into the present with confidence and pride.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-corner"></div>
+          <span class="value-icon">غموض</span>
+          <span class="value-title">The Power of Mystery</span>
+          <p class="value-text">Our name is our manifesto. In a world that over-explains everything, we believe in restraint — in the allure of the unsaid, the unfinished, the deliberately ambiguous. Our clients do not need to announce themselves. Their clothes do it for them, in a whisper.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-corner"></div>
+          <span class="value-icon">أخلاق</span>
+          <span class="value-title">Ethical Sourcing</span>
+          <p class="value-text">Beauty without conscience is empty. We partner exclusively with suppliers who share our commitment to ethical labour practices, environmental stewardship, and sustainable sourcing. Every yard of cloth that enters our atelier has a clean, traceable story.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-corner"></div>
+          <span class="value-icon">عميل</span>
+          <span class="value-title">The Client Above All</span>
+          <p class="value-text">Our client is not a customer. He is a collaborator. Each fitting is a dialogue; each alteration, a refinement of a vision held jointly between artisan and wearer. We do not dress men — we work alongside them to discover who they already are.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-corner"></div>
+          <span class="value-icon">جمال</span>
+          <span class="value-title">Uncompromising Beauty</span>
+          <p class="value-text">We hold beauty to be a serious, necessary thing — not vanity, but a form of respect: for the craft, for the wearer, and for all those who will encounter him. At أُحجِيَّة, we treat aesthetics as a moral obligation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FOUNDERS ══ -->
+    <section class="founders-section">
+      <div class="section-header">
+        <span class="section-label">◈ &nbsp; The Minds Behind the Mystery &nbsp; ◈</span>
+        <h2 class="section-title">Meet the <em>Founders</em></h2>
+      </div>
+      <div class="founders-grid">
+        <div class="founder-card">
+          <div class="founder-avatar">S</div>
+          <p class="founder-name">Shahida Sharfaz</p>
+          <p class="founder-role">Creative Director & Master Tailor</p>
+          <p class="founder-bio">Trained in Paris and Florence for over a decade, Shahida returned to Riyadh in 2007 with a vision: to give Arab men garments worthy of their heritage. She oversees every collection and personally supervises each bespoke commission.</p>
+        </div>
+        <div class="founder-card">
+          <div class="founder-avatar">H</div>
+          <p class="founder-name">Huzaifa Fayaz</p>
+          <p class="founder-role">Co-Founder & Business Director</p>
+          <p class="founder-bio">A business strategist with a poet's sensibility, Huzaifa shapes the brand's identity and growth with equal care. His belief that commerce and culture are inseparable has guided أُحجِيَّة from a single atelier to an internationally recognised house.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FOOTER ══ -->
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand footer-col">
+          <span class="arabic-name">أُحجِيَّة</span>
+          <span class="brand-tagline">Mystery · Men's Couture · Est. 2007</span>
+          <p>Founded in the heart of Riyadh, أُحجِيَّة has dressed men who understand that clothing is not worn — it is inhabited. Every piece is a secret told through cloth.</p>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Navigate</span>
+          <ul>
+            <li><a href="Mystery.html">Home</a></li>
+            <li><a href="About Us.html">About</a></li>
+            <li><a href="Collection.html">Collection</a></li>
+            <li><a href="Contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Collections</span>
+          <ul>
+            <li><a href="Collection.html">The White Prince</a></li>
+            <li><a href="Collection.html">The Black Knight</a></li>
+            <li><a href="Collection.html">Crimson Sovereign</a></li>
+            <li><a href="Collection.html">Midnight Heir</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact footer-col">
+          <span class="footer-col-title">Contact</span>
+          <p><strong>Address</strong>Al Olaya District, King Fahd Road, Riyadh, Saudi Arabia</p>
+          <p><strong>Phone</strong>+966 56 079 3181</p>
+          <p><strong>Email</strong>assist@mystery.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 أُحجِيَّة — All rights reserved</span>
+        <div class="footer-social">
+          <a href="#">Instagram</a>
+          <a href="#">X / Twitter</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
